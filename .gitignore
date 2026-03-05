@@ -11,8 +11,8 @@ frontend/dist/
 # Backups and Debug folders
 frontend/Debug/
 frontend/src_backup_before_refactor/
-"public(backup)/"
-"src 18 frames/"
+public(backup)/
+src 18 frames/
 mux_assets/
 
 # Development scripts and temporary data
