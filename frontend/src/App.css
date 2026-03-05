@@ -1,0 +1,24 @@
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Focus Mode CSS */
+.focus-mode-active .mux-node:not([data-highlighted="true"]),
+.focus-mode-active .mux-wire:not([data-highlighted="true"]) {
+  opacity: var(--focus-dim-level, 0.2) !important;
+}
+
+/* Foreground Selection Logic */
+.mux-node[data-selected="true"] {
+  z-index: 9999 !important;
+}
+
+.mux-wire[data-selected="true"],
+.mux-wire[data-highlighted="true"] {
+  /* For SVG elements, we can't use z-index, so we'll handle stacking in the React map, 
+     but we can still use this attribute for other styling if needed. */
+  stroke-width: 5px; /* Slightly thicker when selected */
+}

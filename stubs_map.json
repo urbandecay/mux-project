@@ -1,0 +1,406 @@
+{
+  "Inputs Outputs/Event Output.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Inputs Outputs/Event Input.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Inputs Outputs/Audio Output.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Inputs Outputs/Audio Input.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Inputs Outputs/Modulation Input.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Inputs Outputs/Modulation Output.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Modulation Processors/Modulation Monitor.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Modulation Processors/Modulation Mapper.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Modulation Processors/Modulation Sample & Hold.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/Piano Keyboard.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/Pitch Bend Generator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/MIDI Controller Event Pad.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/MIDI Controller Generator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/XY MIDI Controller Pad.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/Initial Event Generator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/Note Event Pad.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/Sequence Player.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/Audio Envelope Follower.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/Parameter Value Randomizer.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/Parameter Event Generator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/Note On Upon Note Off Generator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/Step Sequencer.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Generators/XY Parameter Pad.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Converters/Modulation To Audio Converter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Converters/Pitchbend To Modulation Converter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Converters/Aftertouch To Modulation Converter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Converters/Audio To Modulation Converter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Converters/Note To Modulation Converter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Converters/Controller To Modulation Converter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Generators/Poly Synth.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Generators/Test Sine Generator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Generators/Oscillator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Generators/Sample Player.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Generators/Multi-Form Oscillator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Generators/Pasted Layer.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Generators/Noise Generator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Generators/Grain Player.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Generators/Multi-Sample Player.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/MIDI Channel Splitter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Note Key Splitter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Note Length Modifier.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Monophonic Note Tracker.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/MIDI Controller Filter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Event Delay.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/MIDI Channel Remapper.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Event Monitor.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Note Zone Mapper.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Note Dispatcher.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Note Key Ranger.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Drum Note Processor.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Note Key Mapper.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Event Recorder.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Note Key-Vel Filter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Note Modifier.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Event Processors/Note Stutterer.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Modulation Generators/Wobble Generator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Modulation Generators/XY Modulation Pad.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Modulation Generators/LFO.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Modulation Generators/Constant Modulator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Modulation Generators/Multi-Point Envelope.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Modulation Generators/ADSR Envelope.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Utilities/Freeze Point.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Utilities/Latency Generator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Utilities/Patch Point.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Others/Rack.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Others/Module Slot.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Others/Composer.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Others/Rack Slot.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Others/Send.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Others/MUX Modular.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Audio Balancer 2-1.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/4P Lowpass Filter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Audio Pos-Neg Splitter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Amplifier.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Mono Echo (Long).png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Mixer Strip.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Ring Modulator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Stereo Combinor.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Audio Dispatcher.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Audio Limiter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Stereo Splitter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Bit Reducer.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Resonator.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/1P Lowpass Filter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Oscilloscope.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Modular Feedback Delay.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/EQ - FilterBank.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Level Compressor.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Frequency Spectrum Analyser.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Samplerate Reducer.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Mono Echo (Short).png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/2P MultiMode Filter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Chebyshev II Filter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Amp Distortion.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Audio Inverter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Unipolarizer.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Audio Level Meter.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Audio File Recorder.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Audio Balancer 1-2.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Pure Delay.png": {
+    "top": true,
+    "bottom": true
+  },
+  "Audio Processors/Allpass Filter.png": {
+    "top": true,
+    "bottom": true
+  }
+}

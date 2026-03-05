@@ -1,0 +1,37 @@
+# Dependency and build artifacts
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+
+# Logs and system files
+.DS_Store
+*.log
+
+# Backups and Debug folders
+frontend/Debug/
+frontend/src_backup_before_refactor/
+"public(backup)/"
+"src 18 frames/"
+mux_assets/
+
+# Development scripts and temporary data
+*.py
+*.txt
+*.png
+address
+
+# Keep specific important files
+!frontend/package.json
+!frontend/package-lock.json
+!stubs_map.json
+!verified_stubs.json
+!frontend/public/vite.svg
+!frontend/src/assets/react.svg
+
+# Ignore legacy assets now that app is procedural
+frontend/public/Assets/
+
+# Environment and secrets
+.env
+.vscode/
