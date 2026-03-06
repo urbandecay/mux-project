@@ -75,3 +75,33 @@ export const getWiresInRect = (rect, wires, getWirePath) => {
         }
     });
 };
+
+export const getHorizontalSegmentsInRect = (rect, wires, getWirePath) => {
+    const { startX, currentX, startY, currentY } = rect;
+    const x1 = Math.min(startX, currentX);
+    const x2 = Math.max(startX, currentX);
+    const y1 = Math.min(startY, currentY);
+    const y2 = Math.max(startY, currentY);
+
+    const segments = [];
+    wires.forEach(w => {
+        const path = getWirePath(w);
+        if (!path || path.length < 2) return;
+
+        for (let i = 0; i < path.length - 1; i++) {
+            const p1 = path[i];
+            const p2 = path[i+1];
+            
+            // Check if horizontal
+            if (Math.abs(p1.y - p2.y) < 1) {
+                // Check if segment is fully contained in rect
+                const segX1 = Math.min(p1.x, p2.x);
+                const segX2 = Math.max(p1.x, p2.x);
+                if (segX1 >= x1 && segX2 <= x2 && p1.y >= y1 && p1.y <= y2) {
+                    segments.push({ id: w.id, segmentIndex: i });
+                }
+            }
+        }
+    });
+    return segments;
+};

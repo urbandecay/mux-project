@@ -134,70 +134,73 @@ export const calculateWireDrag = (dragState, dx, dy, wires, nextNodes) => {
         let updated = { ...w };
         let wireChanged = false;
         
-        // CASE A: Dragging a specific wire segment (manually)
-        // We prioritize this if a segment index is provided AND this is the exact wire clicked.
-        if (dragState.draggedWireId === w.id && dragState.draggedSegmentIndex !== null && dragState.draggedSegmentIndex !== undefined) {
-          if (initY !== undefined) { 
-            const pointCount = dragState.initialWirePointCounts[w.id];
-            
-            // Get port positions for clamping
-            const source = nodeMap.get(w.sourceId);
-            const target = nodeMap.get(w.targetId);
-            let h1 = null, h2 = null;
-            if (source && target) {
-              h1 = ConnectionManager.getHandles(source, nextNodes, wires).find(h => h.id === w.sourcePortId);
-              h2 = ConnectionManager.getHandles(target, nextNodes, wires).find(h => h.id === w.targetPortId);
-            }
+        // CASE A: Dragging a specific wire segment
+        // If this wire is the one being dragged OR if it's part of the captured group and we are dragging a segment
+        const isDraggedWire = dragState.draggedWireId === w.id;
+        const isCapturedWire = dragState.initialWiresY[w.id] !== undefined;
+        const hasDraggedSegment = dragState.draggedSegmentIndex !== null && dragState.draggedSegmentIndex !== undefined;
+
+        if ((isDraggedWire || (isCapturedWire && hasDraggedSegment)) && initY !== undefined) {
+          const pointCount = dragState.initialWirePointCounts[w.id];
           
-            if (pointCount === 4) {
-                // Z-connection: Only one horizontal segment (index 1)
-                if (dragState.draggedSegmentIndex === 1) {
-                    let newY = ConnectionManager.snap(initY + dy, true);
-                    if (h1 && h2) {
-                      const minY = h1.y + 11;
-                      const maxY = h2.y - 11;
-                      newY = Math.max(minY, Math.min(maxY, newY));
-                    }
-                    if (updated.centerY !== newY || updated.centerY2 !== undefined || updated.centerX !== undefined) {
-                        updated.centerY = newY;
-                        updated.centerY2 = undefined;
-                        updated.centerX = undefined;
-                        wireChanged = true;
-                    }
-                }
-            } else if (pointCount === 6) {
-                // S-connection: Two horizontal segments (1, 3) and one vertical (2)
-                if (dragState.draggedSegmentIndex === 1) {
+          // Get port positions for clamping
+          const source = nodeMap.get(w.sourceId);
+          const target = nodeMap.get(w.targetId);
+          let h1 = null, h2 = null;
+          if (source && target) {
+            h1 = ConnectionManager.getHandles(source, nextNodes, wires).find(h => h.id === w.sourcePortId);
+            h2 = ConnectionManager.getHandles(target, nextNodes, wires).find(h => h.id === w.targetPortId);
+          }
+        
+          if (pointCount === 4) {
+              // Z-connection: Only one horizontal segment (index 1)
+              // If we are dragging ANY horizontal segment of the group (1 or 3), we move this one
+              if (dragState.draggedSegmentIndex === 1 || dragState.draggedSegmentIndex === 3) {
                   let newY = ConnectionManager.snap(initY + dy, true);
-                  if (h1) newY = Math.max(h1.y + 11, newY);
-                  if (updated.centerY !== newY || updated.centerY2 !== initY2 || updated.centerX !== initX) {
+                  if (h1 && h2) {
+                    const minY = h1.y + 11;
+                    const maxY = h2.y - 11;
+                    newY = Math.max(minY, Math.min(maxY, newY));
+                  }
+                  if (updated.centerY !== newY || updated.centerY2 !== undefined || updated.centerX !== undefined) {
                       updated.centerY = newY;
-                      if (updated.centerY2 === undefined) updated.centerY2 = initY2;
-                      if (updated.centerX === undefined) updated.centerX = initX;
+                      updated.centerY2 = undefined;
+                      updated.centerX = undefined;
                       wireChanged = true;
                   }
-                } else if (dragState.draggedSegmentIndex === 3) {
-                  let newY = ConnectionManager.snap(initY2 + dy, true);
-                  if (h2) newY = Math.min(h2.y - 11, newY);
-                  if (updated.centerY2 !== newY || updated.centerY !== initY || updated.centerX !== initX) {
-                      updated.centerY2 = newY;
-                      if (updated.centerY === undefined) updated.centerY = initY;
-                      if (updated.centerX === undefined) updated.centerX = initX;
-                      wireChanged = true;
-                  }
-                } else if (dragState.draggedSegmentIndex === 2) {
-                  let newX = ConnectionManager.snap(initX + dx, false);
-                  if (updated.centerX !== newX || updated.centerY !== initY || updated.centerY2 !== initY2) {
-                      updated.centerX = newX;
-                      if (updated.centerY === undefined) updated.centerY = initY;
-                      if (updated.centerY2 === undefined) updated.centerY2 = initY2;
-                      wireChanged = true;
-                  }
+              }
+          } else if (pointCount === 6) {
+              // S-connection: Two horizontal segments (1, 3) and one vertical (2)
+              if (dragState.draggedSegmentIndex === 1) {
+                let newY = ConnectionManager.snap(initY + dy, true);
+                if (h1) newY = Math.max(h1.y + 11, newY);
+                if (updated.centerY !== newY || updated.centerY2 !== initY2 || updated.centerX !== initX) {
+                    updated.centerY = newY;
+                    if (updated.centerY2 === undefined) updated.centerY2 = initY2;
+                    if (updated.centerX === undefined) updated.centerX = initX;
+                    wireChanged = true;
                 }
-            }
+              } else if (dragState.draggedSegmentIndex === 3) {
+                let newY = ConnectionManager.snap(initY2 + dy, true);
+                if (h2) newY = Math.min(h2.y - 11, newY);
+                if (updated.centerY2 !== newY || updated.centerY !== initY || updated.centerX !== initX) {
+                    updated.centerY2 = newY;
+                    if (updated.centerY === undefined) updated.centerY = initY;
+                    if (updated.centerX === undefined) updated.centerX = initX;
+                    wireChanged = true;
+                }
+              } else if (dragState.draggedSegmentIndex === 2) {
+                let newX = ConnectionManager.snap(initX + dx, false);
+                if (updated.centerX !== newX || updated.centerY !== initY || updated.centerY2 !== initY2) {
+                    updated.centerX = newX;
+                    if (updated.centerY === undefined) updated.centerY = initY;
+                    if (updated.centerY2 === undefined) updated.centerY2 = initY2;
+                    wireChanged = true;
+                }
+              }
           }
         } 
-        // CASE B: Moving a group or pushing via nodes
+        // CASE B: Moving a group or pushing via nodes (no segment drag context)
         else {
           // 1. Move explicitly selected wire properties
           if (initY !== undefined) {

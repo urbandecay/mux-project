@@ -21,17 +21,9 @@ mux_assets/
 *.png
 address
 
-# Keep specific important files
-!frontend/package.json
-!frontend/package-lock.json
-!stubs_map.json
-!verified_stubs.json
-!frontend/public/vite.svg
-!frontend/src/assets/react.svg
-
-# Ignore legacy assets now that app is procedural
-frontend/public/Assets/
-
 # Environment and secrets
 .env
 .vscode/
+stubs_map.json
+verified_stubs.json
+SSH_Key_Info.md

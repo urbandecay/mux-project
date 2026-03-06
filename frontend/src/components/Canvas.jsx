@@ -508,8 +508,27 @@ const Canvas = ({ onOpenMenu, onOpenNoteEditor, onCloseMenu }) => {
 
     if (activeSelectionBoxRef.current) {
       const finalBox = activeSelectionBoxRef.current;
-      const insideNodes = SpatialManager.getNodesInRect(finalBox, currentVisibleNodes).map(n => n.id);
-      const insideWires = SpatialManager.getWiresInRect(finalBox, currentVisibleWires, getWirePathInternal).map(w => w.id);
+      const isDraggingRight = finalBox.currentX > finalBox.startX;
+      
+      let insideNodes = [];
+      let insideWires = [];
+
+      if (isDraggingRight) {
+          // Special mode: Check for horizontal segments first
+          const horizontalSegments = SpatialManager.getHorizontalSegmentsInRect(finalBox, currentVisibleWires, getWirePathInternal);
+          if (horizontalSegments.length > 0) {
+              insideWires = horizontalSegments.map(s => s.id);
+          } else {
+              // Standard contained selection
+              insideNodes = SpatialManager.getNodesInRect(finalBox, currentVisibleNodes).map(n => n.id);
+              insideWires = SpatialManager.getWiresInRect(finalBox, currentVisibleWires, getWirePathInternal).map(w => w.id);
+          }
+      } else {
+          // Standard touching selection
+          insideNodes = SpatialManager.getNodesInRect(finalBox, currentVisibleNodes).map(n => n.id);
+          insideWires = SpatialManager.getWiresInRect(finalBox, currentVisibleWires, getWirePathInternal).map(w => w.id);
+      }
+
       setSelectedNodeIds(prev => [...new Set([...prev, ...insideNodes])]); setSelectedWireIds(prev => [...new Set([...prev, ...insideWires])]);
       activeSelectionBoxRef.current = null; if (selectionBoxRef.current) selectionBoxRef.current.style.display = 'none';
     }
