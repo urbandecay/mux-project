@@ -110,29 +110,32 @@ export const createUISlice = (set, get) => ({
     let newZoom = Math.min(scaleX, scaleY);
     if (newZoom > 2) newZoom = 2; if (newZoom < 0.1) newZoom = 0.1;
     
-    const visualCenterX = leftPanelWidth + padding + (availableW / 2), visualCenterY = window.innerHeight / 2;
+    const visualCenterX = leftPanelWidth + (window.innerWidth - leftPanelWidth) / 2;
+    const visualCenterY = window.innerHeight / 2;
     set({ camera: { x: visualCenterX - centerX * newZoom, y: visualCenterY - centerY * newZoom, zoom: newZoom } });
   },
 
   zoomReset: () => {
     const state = get();
-    const visibleNodes = state.nodes.filter(n => n.parentId === state.parentId);
-    let centerX = 0, centerY = 0;
+    const currentCamera = state.camera;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const leftPanelWidth = 150; // Matching the padding logic in zoomExtents
 
-    if (visibleNodes.length > 0) {
-        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-        visibleNodes.forEach(n => {
-            const mod = moduleRegistry[n.label];
-            const w = mod?.isAnchor ? 20 : (mod?.width || 99);
-            const h = mod?.realHeight || 38;
-            if (n.x < minX) minX = n.x;
-            if (n.x + w > maxX) maxX = n.x + w;
-            if (n.y < minY) minY = n.y;
-            if (n.y + h > maxY) maxY = n.y + h;
-        });
-        if (minX !== Infinity) { centerX = (minX + maxX) / 2; centerY = (minY + maxY) / 2; }
-    }
-    set({ camera: { x: (window.innerWidth / 2) - centerX, y: (window.innerHeight / 2) - centerY, zoom: 1 } });
+    // Calculate current viewport center in screen coordinates
+    const viewCenterX = leftPanelWidth + (viewportWidth - leftPanelWidth) / 2;
+    const viewCenterY = viewportHeight / 2;
+
+    // Convert screen center to world coordinates using current camera
+    const worldCenterX = (viewCenterX - currentCamera.x) / currentCamera.zoom;
+    const worldCenterY = (viewCenterY - currentCamera.y) / currentCamera.zoom;
+
+    // Set new zoom to 1, and adjust x/y so the same world point stays at screen center
+    const newZoom = 1;
+    const newX = viewCenterX - worldCenterX * newZoom;
+    const newY = viewCenterY - worldCenterY * newZoom;
+
+    set({ camera: { x: newX, y: newY, zoom: newZoom } });
   },
 
   navigateOut: () => {
