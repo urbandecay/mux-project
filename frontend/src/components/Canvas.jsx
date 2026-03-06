@@ -48,8 +48,6 @@ const Canvas = ({ onOpenMenu, onOpenNoteEditor, onCloseMenu }) => {
     return map;
   }, [visibleNodes]);
 
-  const connectionHash = React.useMemo(() => wires.map(w => `${w.id}:${w.sourceId}:${w.targetId}`).join(','), [wires]);
-
   // Pre-calculate docking/stacking states for all nodes efficiently
   const dockingStateMap = React.useMemo(() => {
     const map = new Map();
@@ -267,17 +265,10 @@ const Canvas = ({ onOpenMenu, onOpenNoteEditor, onCloseMenu }) => {
         };
 
         selectedNodeIds.forEach(nid => traceSelection(nid));
-        selectedWireIds.forEach(wid => {
-            const w = visibleWires.find(wire => wire.id === wid);
-            if (w) {
-                traceSelection(w.sourceId);
-                traceSelection(w.targetId);
-            }
-        });
     }
 
     return { highlightedNodeIds: hNodes, highlightedWireIds: hWires };
-  }, [selectedNodeIds, selectedWireIds, connectionHash, editingGroupId, focusMode, visibleNodesMap, visibleNodes, visibleWires, highlightByIndicators, activeModules]);
+  }, [selectedNodeIds, selectedWireIds, editingGroupId, focusMode, visibleNodesMap, visibleNodes, visibleWires, highlightByIndicators, activeModules]);
 
   const getWirePath = (wire) => {
     const s = visibleNodesMap.get(wire.sourceId), t = visibleNodesMap.get(wire.targetId);
